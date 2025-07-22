@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة نقاط الضومنة</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="start-screen" class="screen">
+        <h1>حاسبة نقاط الضومنة <span class="icon">🎲</span></h1>
+        <p class="subtitle">مع تحيات أبو داحم</p>
+        <div class="input-group">
+            <label for="input-teamA-name">اسم الفريق الأول:</label>
+            <input type="text" id="input-teamA-name" placeholder="مثال: فريق الغاشية">
+        </div>
+        <div class="input-group">
+            <label for="input-teamB-name">اسم الفريق الثاني:</label>
+            <input type="text" id="input-teamB-name" placeholder="مثال: فريق الجمعة">
+        </div>
+        <button onclick="startGame()">بدء اللعب</button>
+    </div>
+
+    <div id="game-screen" class="screen hidden">
+        <h1>حاسبة نقاط الضومنة <span class="icon">🎲</span></h1>
+        <p class="subtitle">مع تحيات أبو داحم</p>
+
+        <div class="score-section">
+            <div class="team-a team-card">
+                <h2 id="teamA-name">الفريق الأول</h2>
+                <p class="score" id="teamA-score">0</p>
+                <div class="buttons-grid">
+                    <button onclick="addPoints('A', 1)">+1</button>
+                    <button onclick="addPoints('A', 2)">+2</button>
+                    <button onclick="addPoints('A', 3)">+3</button>
+                    <button onclick="addPoints('A', 4)">+4</button>
+                    <button onclick="addPoints('A', 5)">+5</button>
+                    <button onclick="addPoints('A', 6)">+6</button>
+                    <button onclick="addPoints('A', 7)">+7</button>
+                    <button onclick="addPoints('A', 8)">+8</button>
+                    <button onclick="addPoints('A', 9)">+9</button>
+                    <button onclick="addPoints('A', 10)">+10</button>
+                    <button onclick="addPoints('A', 11)">+11</button>
+                </div>
+                <button class="reset-team-points" onclick="resetPoints('A')">صفر العداد</button>
+            </div>
+
+            <div class="team-b team-card">
+                <h2 id="teamB-name">الفريق الثاني</h2>
+                <p class="score" id="teamB-score">0</p>
+                <div class="buttons-grid">
+                    <button onclick="addPoints('B', 1)">+1</button>
+                    <button onclick="addPoints('B', 2)">+2</button>
+                    <button onclick="addPoints('B', 3)">+3</button>
+                    <button onclick="addPoints('B', 4)">+4</button>
+                    <button onclick="addPoints('B', 5)">+5</button>
+                    <button onclick="addPoints('B', 6)">+6</button>
+                    <button onclick="addPoints('B', 7)">+7</button>
+                    <button onclick="addPoints('B', 8)">+8</button>
+                    <button onclick="addPoints('B', 9)">+9</button>
+                    <button onclick="addPoints('B', 10)">+10</button>
+                    <button onclick="addPoints('B', 11)">+11</button>
+                </div>
+                <button class="reset-team-points" onclick="resetPoints('B')">صفر العداد</button>
+            </div>
+        </div>
+
+        <div id="messages" class="messages"></div>
+        <button class="reset-game-button" onclick="resetGame()">إعادة تعيين المباراة بالكامل</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

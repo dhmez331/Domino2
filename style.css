@@ -1,0 +1,366 @@
+:root {
+    --dark-bg: #1a202c; /* خلفية داكنة جداً */
+    --card-bg: #2d3748; /* خلفية الكارد أغمق قليلاً */
+    --text-light: #edf2f7; /* نص فاتح جداً */
+    --text-medium: #a0aec0; /* نص متوسط الوضوح */
+    --accent-blue: #63b3ed; /* أزرق فاتح كلون مميز */
+    --accent-green: #48bb78; /* أخضر للاحتفال */
+    --accent-purple: #9f7aea; /* بنفسجي للصيمة */
+    --accent-orange: #ed8936; /* برتقالي للحرق */
+    --button-bg: #4299e1; /* لون أزرق عام للأزرار */
+    --button-hover: #3182ce;
+    --reset-button-bg: #e53e3e; /* أحمر لزر إعادة تعيين */
+    --reset-button-hover: #c53030;
+
+    /* تعريف أحجام الخطوط الأساسية بوحدة REM */
+    --base-font-size: 16px; /* 1rem = 16px */
+    --score-font-size: 5rem; /* 5 * 16px = 80px */
+    --title-font-size: 2.8rem; /* 2.8 * 16px = 44.8px */
+    --subtitle-font-size: 1.1rem; /* 1.1 * 16px = 17.6px */
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    direction: rtl;
+    text-align: center;
+    overflow-x: hidden;
+    font-size: var(--base-font-size); /* تعيين حجم الخط الأساسي للـ body */
+}
+
+h1 {
+    color: var(--text-light);
+    margin-bottom: 0.625rem; /* 10px */
+    font-size: var(--title-font-size);
+    font-weight: 700;
+    letter-spacing: 0.0625rem; /* 1px */
+}
+
+h1 .icon {
+    font-size: 0.8em;
+    margin-right: 0.625rem; /* 10px */
+    color: var(--accent-blue);
+}
+
+.subtitle {
+    color: var(--text-medium);
+    font-size: var(--subtitle-font-size);
+    margin-bottom: 2.5rem; /* 40px */
+}
+
+/* تنسيق الشاشات الأساسية */
+.screen {
+    background-color: var(--card-bg);
+    border-radius: 0.9375rem; /* 15px */
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.4); /* 10px 20px */
+    padding: 2.5rem; /* 40px */
+    max-width: 56.25rem; /* 900px - تحديد أقصى عرض للشاشات الكبيرة */
+    width: 90vw; /* 90% من عرض الشاشة */
+    box-sizing: border-box;
+}
+
+/* تنسيق شاشة البدء */
+#start-screen {
+    padding-top: 3.75rem; /* 60px */
+    padding-bottom: 3.75rem; /* 60px */
+}
+
+.input-group {
+    margin-bottom: 1.5625rem; /* 25px */
+    text-align: right;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.625rem; /* 10px */
+    font-weight: 700;
+    color: var(--text-light);
+    font-size: 1.1rem; /* نسبة لـ base-font-size */
+}
+
+.input-group input[type="text"] {
+    width: calc(100% - 1.5rem); /* خصم البادينج والحدود (24px) */
+    padding: 0.75rem; /* 12px */
+    border: 0.125rem solid var(--dark-bg); /* 2px */
+    border-radius: 0.5rem; /* 8px */
+    font-size: 1.2rem;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input[type="text"]:focus {
+    border-color: var(--accent-blue);
+}
+
+/* كلاس لإخفاء العناصر */
+.hidden {
+    display: none !important;
+}
+
+/* أزرار عامة */
+button {
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5625rem; /* 12px 25px */
+    margin: 0.5rem; /* 8px */
+    border-radius: 0.5rem; /* 8px */
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.2); /* 4px 6px */
+}
+
+button:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-0.125rem); /* -2px */
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2); /* 2px 4px */
+}
+
+/* تنسيق شاشة اللعب */
+#game-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2.5rem; /* 40px */
+    padding-bottom: 2.5rem; /* 40px */
+}
+
+.score-section {
+    display: flex;
+    gap: 1.875rem; /* 30px */
+    margin-bottom: 2.5rem; /* 40px */
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.team-card {
+    background-color: var(--dark-bg);
+    border-radius: 0.75rem; /* 12px */
+    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.3); /* 6px 12px */
+    padding: 1.5625rem; /* 25px */
+    min-width: 20rem; /* 320px */
+    flex: 1;
+    max-width: 45%; /* لكي لا تكون عريضة جداً في الشاشات الكبيرة */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.team-a h2 {
+    color: var(--accent-blue);
+}
+
+.team-b h2 {
+    color: var(--accent-green);
+}
+
+.score {
+    font-size: var(--score-font-size);
+    font-weight: 700;
+    margin: 1.5625rem 0; /* 25px */
+    color: var(--text-light);
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.625rem; /* 10px */
+    margin-top: 0.9375rem; /* 15px */
+    margin-bottom: 1.5625rem; /* 25px */
+    width: 100%;
+    justify-items: center;
+}
+
+.buttons-grid button {
+    padding: 0.75rem 0; /* 12px */
+    margin: 0;
+    width: 100%;
+    background-color: #4a5568;
+    font-size: 1.05rem;
+    box-shadow: none;
+}
+
+.buttons-grid button:hover {
+    background-color: #636b7d;
+    transform: none;
+}
+.buttons-grid button:active {
+    transform: none;
+}
+
+/* زر تصفير نقاط الفريق (اللون البرتقالي) */
+button.reset-team-points {
+    background-color: var(--accent-orange);
+    color: white;
+    padding: 0.625rem 1.25rem; /* 10px 20px */
+    font-size: 0.95rem;
+    margin-top: auto;
+}
+
+button.reset-team-points:hover {
+    background-color: #dd6b20;
+}
+
+#messages {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 1.875rem; /* 30px */
+    margin-bottom: 1.875rem; /* 30px */
+    padding: 0.9375rem 1.5625rem; /* 15px 25px */
+    border-radius: 0.625rem; /* 10px */
+    min-width: 15.625rem; /* 250px */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3); /* 4px 8px */
+    color: var(--text-light);
+}
+
+#messages.celebration {
+    background-color: var(--accent-green);
+    color: white;
+}
+
+#messages.sima {
+    background-color: var(--accent-purple);
+    color: white;
+}
+
+#messages.harqa {
+    background-color: var(--accent-orange);
+    color: white;
+}
+
+/* تنسيق زر إعادة تعيين المباراة بالكامل */
+button.reset-game-button {
+    background-color: var(--reset-button-bg);
+    color: white;
+    padding: 1.125rem 2.1875rem; /* 18px 35px */
+    font-size: 1.3rem;
+    margin-top: 2.5rem; /* 40px */
+    border-radius: 0.625rem; /* 10px */
+}
+
+button.reset-game-button:hover {
+    background-color: var(--reset-button-hover);
+}
+
+
+/* استجابة التصميم (Responsive Design) */
+
+/* الشاشات الصغيرة جداً (مثل iPhone SE القديم أو أجهزة أندرويد الصغيرة) */
+@media (max-width: 375px) {
+    :root {
+        --base-font-size: 14px;
+        --title-font-size: 2rem; /* 32px */
+        --score-font-size: 3.5rem; /* 56px */
+    }
+    .screen {
+        padding: 1.5rem; /* 24px */
+    }
+    .buttons-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 أزرار في الصف */
+        gap: 0.5rem; /* 8px */
+    }
+    button {
+        padding: 0.625rem 0.8rem; /* 10px 12.8px */
+        font-size: 0.9rem;
+    }
+    #messages {
+        font-size: 1.4rem;
+        padding: 0.75rem 1rem; /* 12px 16px */
+    }
+    button.reset-game-button {
+        padding: 1rem 1.5rem; /* 16px 24px */
+        font-size: 1.05rem;
+    }
+}
+
+/* الهواتف المتوسطة (معظم الآيفونات والساعات الذكية) */
+@media (min-width: 376px) and (max-width: 767px) {
+    :root {
+        --base-font-size: 15px;
+        --title-font-size: 2.2rem; /* 33px */
+        --score-font-size: 4rem; /* 60px */
+    }
+    .screen {
+        padding: 2rem; /* 32px */
+        width: 90vw;
+    }
+    .score-section {
+        flex-direction: column;
+        gap: 1.5rem; /* 24px */
+    }
+    .team-card {
+        min-width: unset;
+        width: 100%;
+        max-width: 100%;
+    }
+    .buttons-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 أزرار في الصف */
+        gap: 0.625rem; /* 10px */
+    }
+    button {
+        padding: 0.75rem 1rem; /* 12px 16px */
+        font-size: 1rem;
+    }
+    #messages {
+        font-size: 1.6rem;
+        padding: 0.875rem 1.25rem; /* 14px 20px */
+    }
+    button.reset-game-button {
+        padding: 1.125rem 2rem; /* 18px 32px */
+        font-size: 1.2rem;
+    }
+}
+
+/* الأجهزة اللوحية وأجهزة الكمبيوتر المحمولة الصغيرة */
+@media (min-width: 768px) and (max-width: 1024px) {
+    :root {
+        --base-font-size: 16px;
+        --title-font-size: 2.5rem;
+        --score-font-size: 4.5rem;
+    }
+    .screen {
+        padding: 2.5rem;
+        width: 80vw;
+    }
+    .score-section {
+        flex-direction: row; /* تعود لصف واحد */
+        gap: 1.875rem; /* 30px */
+    }
+    .team-card {
+        max-width: 48%; /* لتحسين التوزيع */
+    }
+    .buttons-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* الشاشات الكبيرة (أجهزة الكمبيوتر المكتبية والشاشات العريضة) */
+@media (min-width: 1025px) {
+    :root {
+        --base-font-size: 17px;
+        --title-font-size: 3rem;
+        --score-font-size: 5.5rem;
+    }
+    .screen {
+        max-width: 65rem; /* 1040px - أوسع قليلاً */
+        padding: 3rem; /* 48px */
+    }
+}
